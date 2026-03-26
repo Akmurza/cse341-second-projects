@@ -5,8 +5,8 @@ const doc = {
     title: 'Second Project API',
     description: 'CSE 341 Week 03 CRUD API with validation and error handling'
   },
-  host: 'localhost:3001',
-  schemes: ['http'],
+  host: 'cse341-second-projects.onrender.com',
+  schemes: ['https'],
   consumes: ['application/json'],
   produces: ['application/json'],
   tags: [
