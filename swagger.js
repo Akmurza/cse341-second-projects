@@ -1,0 +1,21 @@
+const swaggerAutogen = require('swagger-autogen')();
+
+const doc = {
+  info: {
+    title: 'Second Project API',
+    description: 'CSE 341 Week 03 CRUD API with validation and error handling'
+  },
+  host: 'localhost:3001',
+  schemes: ['http'],
+  consumes: ['application/json'],
+  produces: ['application/json'],
+  tags: [
+    { name: 'Health', description: 'Health routes' },
+    { name: 'Books', description: 'Books CRUD routes' }
+  ]
+};
+
+const outputFile = './swagger-output.json';
+const endpointsFiles = ['./server.js', './src/routes/index.js', './src/routes/books.js'];
+
+swaggerAutogen(outputFile, endpointsFiles, doc);

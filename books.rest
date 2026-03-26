@@ -1,0 +1,36 @@
+### Health
+GET http://localhost:3001/
+
+### Get all books
+GET http://localhost:3001/books
+
+### Create book
+POST http://localhost:3001/books
+Content-Type: application/json
+
+{
+  "title": "Clean Code",
+  "author": "Robert C. Martin",
+  "genre": "Software Development",
+  "publishedYear": 2008,
+  "pages": 464,
+  "rating": 4.7,
+  "inStock": true
+}
+
+### Update book (replace ID)
+PUT http://localhost:3001/books/{{bookId}}
+Content-Type: application/json
+
+{
+  "title": "Clean Architecture",
+  "author": "Robert C. Martin",
+  "genre": "Software Development",
+  "publishedYear": 2017,
+  "pages": 432,
+  "rating": 4.6,
+  "inStock": false
+}
+
+### Delete book (replace ID)
+DELETE http://localhost:3001/books/{{bookId}}
