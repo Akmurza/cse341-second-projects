@@ -3,14 +3,16 @@
 CSE 341 Week 03 Project 2 Part 1.
 
 ## Features
+
 - Express REST API
-- MongoDB connection
+- MongoDB 
 - CRUD routes (`GET`, `POST`, `PUT`, `DELETE`)
 - Validation with `express-validator`
-- Centralized error handling
+- Error handling
 - Swagger docs at `/api-docs`
 
-## Project Structure
+## Structure
+
 - `server.js`
 - `src/database/connect.js`
 - `src/controllers/books.js`
@@ -21,14 +23,10 @@ CSE 341 Week 03 Project 2 Part 1.
 - `swagger-output.json`
 - `books.rest`
 
-## Setup
-1. Install dependencies:
-   - `npm install`
-2. Create `.env` from `.env.example` and fill MongoDB values.
-3. Run server:
-   - `npm run dev`
+
 
 ## Routes
+
 - `GET /`
 - `GET /books`
 - `GET /books/:id`
@@ -37,6 +35,7 @@ CSE 341 Week 03 Project 2 Part 1.
 - `DELETE /books/:id`
 
 ## Validation fields for books
+
 - `title` (string, required)
 - `author` (string, required)
 - `genre` (string, required)
@@ -45,5 +44,3 @@ CSE 341 Week 03 Project 2 Part 1.
 - `rating` (float 0-5, required)
 - `inStock` (boolean, required)
 
-## Notes
-- For Week 04 you can add OAuth/authentication without changing core CRUD structure.
