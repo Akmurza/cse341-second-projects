@@ -56,6 +56,19 @@ const create = async (req, res, next) => {
 
 const update = async (req, res, next) => {
   /* #swagger.tags = ['Books'] */
+  /* #swagger.parameters['body'] = {
+        in: 'body',
+        required: true,
+        schema: {
+          title: 'The Great Gatsby',
+          author: 'F. Scott Fitzgerald',
+          genre: 'Fiction',
+          publishedYear: 1925,
+          pages: 180,
+          rating: 4.5,
+          inStock: true
+        }
+  } */
   try {
     const { id } = req.params;
     const result = await getCollection().replaceOne(

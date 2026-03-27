@@ -189,6 +189,44 @@
             "in": "path",
             "required": true,
             "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "title": {
+                  "type": "string",
+                  "example": "The Great Gatsby"
+                },
+                "author": {
+                  "type": "string",
+                  "example": "F. Scott Fitzgerald"
+                },
+                "genre": {
+                  "type": "string",
+                  "example": "Fiction"
+                },
+                "publishedYear": {
+                  "type": "number",
+                  "example": 1925
+                },
+                "pages": {
+                  "type": "number",
+                  "example": 180
+                },
+                "rating": {
+                  "type": "number",
+                  "example": 4.5
+                },
+                "inStock": {
+                  "type": "boolean",
+                  "example": true
+                }
+              }
+            }
           }
         ],
         "responses": {
@@ -257,6 +295,44 @@
             "in": "path",
             "required": true,
             "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "title": {
+                  "type": "string",
+                  "example": "The Great Gatsby"
+                },
+                "author": {
+                  "type": "string",
+                  "example": "F. Scott Fitzgerald"
+                },
+                "genre": {
+                  "type": "string",
+                  "example": "Fiction"
+                },
+                "publishedYear": {
+                  "type": "number",
+                  "example": 1925
+                },
+                "pages": {
+                  "type": "number",
+                  "example": 180
+                },
+                "rating": {
+                  "type": "number",
+                  "example": 4.5
+                },
+                "inStock": {
+                  "type": "boolean",
+                  "example": true
+                }
+              }
+            }
           }
         ],
         "responses": {
