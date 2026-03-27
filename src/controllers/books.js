@@ -17,6 +17,7 @@ const getAll = async (req, res, next) => {
 
 const getById = async (req, res, next) => {
   /* #swagger.tags = ['Books'] */
+  /* #swagger.parameters['id'] = { description: 'Book ID' } */
   try {
     const { id } = req.params;
     const book = await getCollection().findOne({ _id: new ObjectId(id) });
@@ -56,16 +57,17 @@ const create = async (req, res, next) => {
 
 const update = async (req, res, next) => {
   /* #swagger.tags = ['Books'] */
+  /* #swagger.parameters['id'] = { description: 'Book ID' } */
   /* #swagger.parameters['body'] = {
         in: 'body',
         required: true,
         schema: {
-          title: 'The Great Gatsby',
-          author: 'F. Scott Fitzgerald',
-          genre: 'Fiction',
-          publishedYear: 1925,
-          pages: 180,
-          rating: 4.5,
+          title: 'Book Title',
+          author: 'Author Name',
+          genre: 'Genre',
+          publishedYear: 2000,
+          pages: 300,
+          rating: 4.0,
           inStock: true
         }
   } */
@@ -88,6 +90,7 @@ const update = async (req, res, next) => {
 
 const remove = async (req, res, next) => {
   /* #swagger.tags = ['Books'] */
+  /* #swagger.parameters['id'] = { description: 'Book ID' } */
   try {
     const { id } = req.params;
     const result = await getCollection().deleteOne({ _id: new ObjectId(id) });

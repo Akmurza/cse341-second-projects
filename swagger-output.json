@@ -166,7 +166,8 @@
             "name": "id",
             "in": "path",
             "required": true,
-            "type": "string"
+            "type": "string",
+            "description": "Book ID"
           }
         ],
         "responses": {
@@ -188,7 +189,8 @@
             "name": "id",
             "in": "path",
             "required": true,
-            "type": "string"
+            "type": "string",
+            "description": "Book ID"
           },
           {
             "name": "body",
@@ -199,27 +201,27 @@
               "properties": {
                 "title": {
                   "type": "string",
-                  "example": "The Great Gatsby"
+                  "example": "Book Title"
                 },
                 "author": {
                   "type": "string",
-                  "example": "F. Scott Fitzgerald"
+                  "example": "Author Name"
                 },
                 "genre": {
                   "type": "string",
-                  "example": "Fiction"
+                  "example": "Genre"
                 },
                 "publishedYear": {
                   "type": "number",
-                  "example": 1925
+                  "example": 2000
                 },
                 "pages": {
                   "type": "number",
-                  "example": 180
+                  "example": 300
                 },
                 "rating": {
                   "type": "number",
-                  "example": 4.5
+                  "example": 4
                 },
                 "inStock": {
                   "type": "boolean",
@@ -248,7 +250,8 @@
             "name": "id",
             "in": "path",
             "required": true,
-            "type": "string"
+            "type": "string",
+            "description": "Book ID"
           }
         ],
         "responses": {
@@ -272,7 +275,8 @@
             "name": "id",
             "in": "path",
             "required": true,
-            "type": "string"
+            "type": "string",
+            "description": "Book ID"
           }
         ],
         "responses": {
@@ -294,7 +298,8 @@
             "name": "id",
             "in": "path",
             "required": true,
-            "type": "string"
+            "type": "string",
+            "description": "Book ID"
           },
           {
             "name": "body",
@@ -305,27 +310,27 @@
               "properties": {
                 "title": {
                   "type": "string",
-                  "example": "The Great Gatsby"
+                  "example": "Book Title"
                 },
                 "author": {
                   "type": "string",
-                  "example": "F. Scott Fitzgerald"
+                  "example": "Author Name"
                 },
                 "genre": {
                   "type": "string",
-                  "example": "Fiction"
+                  "example": "Genre"
                 },
                 "publishedYear": {
                   "type": "number",
-                  "example": 1925
+                  "example": 2000
                 },
                 "pages": {
                   "type": "number",
-                  "example": 180
+                  "example": 300
                 },
                 "rating": {
                   "type": "number",
-                  "example": 4.5
+                  "example": 4
                 },
                 "inStock": {
                   "type": "boolean",
@@ -354,7 +359,8 @@
             "name": "id",
             "in": "path",
             "required": true,
-            "type": "string"
+            "type": "string",
+            "description": "Book ID"
           }
         ],
         "responses": {
