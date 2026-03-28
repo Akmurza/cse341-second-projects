@@ -22,6 +22,7 @@ const options = {
 };
 
 const outputFile = './swagger-output.json';
-const endpointsFiles = ['./server.js', './src/routes/books.js', './src/routes/receipts.js'];
+// Include only the main router; it imports the child routers
+const endpointsFiles = ['./src/routes/index.js'];
 
 swaggerAutogen(outputFile, endpointsFiles, doc, options);
