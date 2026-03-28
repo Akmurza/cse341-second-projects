@@ -9,6 +9,15 @@ dotenv.config();
 const app = express();
 const port = process.env.PORT || 3001;
 
+// Middleware to remove trailing slashes
+app.use((req, res, next) => {
+  if (req.path.length > 1 && req.path.endsWith('/')) {
+    res.redirect(301, req.path.slice(0, -1));
+  } else {
+    next();
+  }
+});
+
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 

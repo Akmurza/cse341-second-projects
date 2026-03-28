@@ -6,6 +6,7 @@ const doc = {
     description: 'CSE 341 Week 03 CRUD API with validation and error handling'
   },
   host: 'cse341-second-projects.onrender.com',
+  basePath: '/',
   schemes: ['https'],
   consumes: ['application/json'],
   produces: ['application/json'],
@@ -16,7 +17,11 @@ const doc = {
   ]
 };
 
+const options = {
+  disableLogs: false
+};
+
 const outputFile = './swagger-output.json';
 const endpointsFiles = ['./server.js', './src/routes/index.js', './src/routes/books.js', './src/routes/receipts.js'];
 
-swaggerAutogen(outputFile, endpointsFiles, doc);
+swaggerAutogen(outputFile, endpointsFiles, doc, options);
