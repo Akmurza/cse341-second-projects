@@ -15,6 +15,10 @@
     {
       "name": "Books",
       "description": "Books CRUD routes"
+    },
+    {
+      "name": "Receipts",
+      "description": "Receipts CRUD routes"
     }
   ],
   "schemes": [
@@ -30,7 +34,7 @@
     "/": {
       "get": {
         "tags": [
-          "Books"
+          "Receipts"
         ],
         "description": "",
         "responses": {
@@ -41,7 +45,7 @@
       },
       "post": {
         "tags": [
-          "Books"
+          "Receipts"
         ],
         "description": "",
         "parameters": [
@@ -52,33 +56,33 @@
             "schema": {
               "type": "object",
               "properties": {
-                "title": {
+                "receiptNumber": {
                   "type": "string",
-                  "example": "The Pragmatic Programmer"
+                  "example": "REC-2026-001"
                 },
-                "author": {
+                "vendorName": {
                   "type": "string",
-                  "example": "Andrew Hunt"
+                  "example": "The Book Haven"
                 },
-                "genre": {
+                "receiptDate": {
                   "type": "string",
-                  "example": "Software Development"
+                  "example": "2026-03-28"
                 },
-                "publishedYear": {
+                "totalAmount": {
                   "type": "number",
-                  "example": 1999
+                  "example": 125.5
                 },
-                "pages": {
+                "itemCount": {
                   "type": "number",
-                  "example": 352
+                  "example": 5
                 },
-                "rating": {
-                  "type": "number",
-                  "example": 4.8
+                "paymentMethod": {
+                  "type": "string",
+                  "example": "credit_card"
                 },
-                "inStock": {
-                  "type": "boolean",
-                  "example": true
+                "category": {
+                  "type": "string",
+                  "example": "groceries"
                 }
               }
             }
@@ -264,10 +268,74 @@
         }
       }
     },
-    "/{id}": {
+    "/receipts/": {
       "get": {
         "tags": [
-          "Books"
+          "Receipts"
+        ],
+        "description": "",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Receipts"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "receiptNumber": {
+                  "type": "string",
+                  "example": "REC-2026-001"
+                },
+                "vendorName": {
+                  "type": "string",
+                  "example": "The Book Haven"
+                },
+                "receiptDate": {
+                  "type": "string",
+                  "example": "2026-03-28"
+                },
+                "totalAmount": {
+                  "type": "number",
+                  "example": 125.5
+                },
+                "itemCount": {
+                  "type": "number",
+                  "example": 5
+                },
+                "paymentMethod": {
+                  "type": "string",
+                  "example": "credit_card"
+                },
+                "category": {
+                  "type": "string",
+                  "example": "groceries"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Created"
+          }
+        }
+      }
+    },
+    "/receipts/{id}": {
+      "get": {
+        "tags": [
+          "Receipts"
         ],
         "description": "",
         "parameters": [
@@ -276,7 +344,7 @@
             "in": "path",
             "required": true,
             "type": "string",
-            "description": "Book ID"
+            "description": "Receipt ID"
           }
         ],
         "responses": {
@@ -290,7 +358,7 @@
       },
       "put": {
         "tags": [
-          "Books"
+          "Receipts"
         ],
         "description": "",
         "parameters": [
@@ -299,7 +367,7 @@
             "in": "path",
             "required": true,
             "type": "string",
-            "description": "Book ID"
+            "description": "Receipt ID"
           },
           {
             "name": "body",
@@ -308,33 +376,33 @@
             "schema": {
               "type": "object",
               "properties": {
-                "title": {
+                "receiptNumber": {
                   "type": "string",
-                  "example": "Book Title"
+                  "example": "REC-2026-002"
                 },
-                "author": {
+                "vendorName": {
                   "type": "string",
-                  "example": "Author Name"
+                  "example": "Ancient Pages"
                 },
-                "genre": {
+                "receiptDate": {
                   "type": "string",
-                  "example": "Genre"
+                  "example": "2026-03-28"
                 },
-                "publishedYear": {
+                "totalAmount": {
                   "type": "number",
-                  "example": 2000
+                  "example": 125.5
                 },
-                "pages": {
+                "itemCount": {
                   "type": "number",
-                  "example": 300
+                  "example": 5
                 },
-                "rating": {
-                  "type": "number",
-                  "example": 4
+                "paymentMethod": {
+                  "type": "string",
+                  "example": "credit_card"
                 },
-                "inStock": {
-                  "type": "boolean",
-                  "example": true
+                "category": {
+                  "type": "string",
+                  "example": "groceries"
                 }
               }
             }
@@ -351,7 +419,7 @@
       },
       "delete": {
         "tags": [
-          "Books"
+          "Receipts"
         ],
         "description": "",
         "parameters": [
@@ -360,7 +428,116 @@
             "in": "path",
             "required": true,
             "type": "string",
-            "description": "Book ID"
+            "description": "Receipt ID"
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "No Content"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        }
+      }
+    },
+    "/{id}": {
+      "get": {
+        "tags": [
+          "Receipts"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "Receipt ID"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "Receipts"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "Receipt ID"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "receiptNumber": {
+                  "type": "string",
+                  "example": "REC-2026-002"
+                },
+                "vendorName": {
+                  "type": "string",
+                  "example": "Ancient Pages"
+                },
+                "receiptDate": {
+                  "type": "string",
+                  "example": "2026-03-28"
+                },
+                "totalAmount": {
+                  "type": "number",
+                  "example": 125.5
+                },
+                "itemCount": {
+                  "type": "number",
+                  "example": 5
+                },
+                "paymentMethod": {
+                  "type": "string",
+                  "example": "credit_card"
+                },
+                "category": {
+                  "type": "string",
+                  "example": "groceries"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "No Content"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Receipts"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "Receipt ID"
           }
         ],
         "responses": {

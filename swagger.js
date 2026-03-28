@@ -11,11 +11,12 @@ const doc = {
   produces: ['application/json'],
   tags: [
     { name: 'Health', description: 'Health routes' },
-    { name: 'Books', description: 'Books CRUD routes' }
+    { name: 'Books', description: 'Books CRUD routes' },
+    { name: 'Receipts', description: 'Receipts CRUD routes' }
   ]
 };
 
 const outputFile = './swagger-output.json';
-const endpointsFiles = ['./server.js', './src/routes/index.js', './src/routes/books.js'];
+const endpointsFiles = ['./server.js', './src/routes/index.js', './src/routes/books.js', './src/routes/receipts.js'];
 
 swaggerAutogen(outputFile, endpointsFiles, doc);
