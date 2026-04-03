@@ -34,6 +34,7 @@ const getById = async (req, res, next) => {
 
 const create = async (req, res, next) => {
   /* #swagger.tags = ['Books'] */
+  /* #swagger.security = [{ cookieAuth: [] }] */
   /* #swagger.parameters['body'] = {
         in: 'body',
         required: true,
@@ -57,6 +58,7 @@ const create = async (req, res, next) => {
 
 const update = async (req, res, next) => {
   /* #swagger.tags = ['Books'] */
+  /* #swagger.security = [{ cookieAuth: [] }] */
   /* #swagger.parameters['id'] = { description: 'Book ID' } */
   /* #swagger.parameters['body'] = {
         in: 'body',
@@ -90,6 +92,7 @@ const update = async (req, res, next) => {
 
 const remove = async (req, res, next) => {
   /* #swagger.tags = ['Books'] */
+  /* #swagger.security = [{ cookieAuth: [] }] */
   /* #swagger.parameters['id'] = { description: 'Book ID' } */
   try {
     const { id } = req.params;

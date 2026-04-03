@@ -1,13 +1,18 @@
 const express = require('express');
 const dotenv = require('dotenv');
-const { connectToMongo } = require('./src/database/connect');
-const routes = require('./src/routes');
-const { notFoundHandler, errorHandler } = require('./src/middleware/errorHandler');
+const session = require('express-session');
 
 dotenv.config();
 
+const { connectToMongo } = require('./src/database/connect');
+const routes = require('./src/routes');
+const { passport, oauthEnabled } = require('./src/config/passport');
+const { notFoundHandler, errorHandler } = require('./src/middleware/errorHandler');
+
 const app = express();
 const port = process.env.PORT || 3001;
+
+app.set('trust proxy', 1);
 
 app.use((req, res, next) => {
   if (req.path !== '/' && 
@@ -22,6 +27,25 @@ app.use((req, res, next) => {
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+
+app.use(
+  session({
+    secret: process.env.SESSION_SECRET || 'fallback-session-secret-change-me',
+    resave: false,
+    saveUninitialized: false,
+    cookie: {
+      httpOnly: true,
+      secure: process.env.NODE_ENV === 'production',
+      sameSite: 'lax',
+      maxAge: 1000 * 60 * 60 * 24
+    }
+  })
+);
+
+app.use(passport.initialize());
+app.use(passport.session());
+
+app.locals.oauthEnabled = oauthEnabled;
 
 app.use('/', routes);
 

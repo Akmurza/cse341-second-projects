@@ -2,7 +2,7 @@
   "swagger": "2.0",
   "info": {
     "title": "Second Project API",
-    "description": "CSE 341 Week 03 CRUD API with validation and error handling",
+    "description": "CSE 341 Week 04 API with CRUD, validation, error handling, and GitHub OAuth authentication",
     "version": "1.0.0"
   },
   "host": "cse341-second-projects.onrender.com",
@@ -11,6 +11,10 @@
     {
       "name": "Health",
       "description": "Health routes"
+    },
+    {
+      "name": "Auth",
+      "description": "GitHub OAuth login/logout routes"
     },
     {
       "name": "Books",
@@ -24,6 +28,14 @@
   "schemes": [
     "https"
   ],
+  "securityDefinitions": {
+    "cookieAuth": {
+      "type": "apiKey",
+      "in": "cookie",
+      "name": "connect.sid",
+      "description": "Session cookie returned after successful OAuth login."
+    }
+  },
   "consumes": [
     "application/json"
   ],
@@ -33,6 +45,9 @@
   "paths": {
     "/": {
       "get": {
+        "tags": [
+          "Health"
+        ],
         "description": "",
         "responses": {
           "200": {
@@ -41,7 +56,75 @@
         }
       }
     },
-    "/books": {
+    "/login": {
+      "get": {
+        "tags": [
+          "Auth"
+        ],
+        "description": "Starts GitHub OAuth login flow.",
+        "responses": {
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/oauth/github/callback": {
+      "get": {
+        "tags": [
+          "Auth"
+        ],
+        "description": "GitHub OAuth callback endpoint.",
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/auth/status": {
+      "get": {
+        "tags": [
+          "Auth"
+        ],
+        "description": "Returns authentication state of current session.",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/logout": {
+      "get": {
+        "tags": [
+          "Auth"
+        ],
+        "description": "Logs out current user session.",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/auth/failure": {
+      "get": {
+        "tags": [
+          "Auth"
+        ],
+        "description": "",
+        "responses": {
+          "401": {
+            "description": "Unauthorized"
+          }
+        }
+      }
+    },
+    "/books/": {
       "get": {
         "tags": [
           "Books"
@@ -101,8 +184,16 @@
         "responses": {
           "201": {
             "description": "Created"
+          },
+          "401": {
+            "description": "Unauthorized"
           }
-        }
+        },
+        "security": [
+          {
+            "cookieAuth": []
+          }
+        ]
       }
     },
     "/books/{id}": {
@@ -185,10 +276,18 @@
           "204": {
             "description": "No Content"
           },
+          "401": {
+            "description": "Unauthorized"
+          },
           "404": {
             "description": "Not Found"
           }
-        }
+        },
+        "security": [
+          {
+            "cookieAuth": []
+          }
+        ]
       },
       "delete": {
         "tags": [
@@ -208,13 +307,21 @@
           "204": {
             "description": "No Content"
           },
+          "401": {
+            "description": "Unauthorized"
+          },
           "404": {
             "description": "Not Found"
           }
-        }
+        },
+        "security": [
+          {
+            "cookieAuth": []
+          }
+        ]
       }
     },
-    "/receipts": {
+    "/receipts/": {
       "get": {
         "tags": [
           "Receipts"
@@ -274,8 +381,16 @@
         "responses": {
           "201": {
             "description": "Created"
+          },
+          "401": {
+            "description": "Unauthorized"
           }
-        }
+        },
+        "security": [
+          {
+            "cookieAuth": []
+          }
+        ]
       }
     },
     "/receipts/{id}": {
@@ -358,10 +473,18 @@
           "204": {
             "description": "No Content"
           },
+          "401": {
+            "description": "Unauthorized"
+          },
           "404": {
             "description": "Not Found"
           }
-        }
+        },
+        "security": [
+          {
+            "cookieAuth": []
+          }
+        ]
       },
       "delete": {
         "tags": [
@@ -381,10 +504,18 @@
           "204": {
             "description": "No Content"
           },
+          "401": {
+            "description": "Unauthorized"
+          },
           "404": {
             "description": "Not Found"
           }
-        }
+        },
+        "security": [
+          {
+            "cookieAuth": []
+          }
+        ]
       }
     }
   }
