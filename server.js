@@ -19,10 +19,15 @@ app.use((req, res, next) => {
       !req.path.startsWith('/api-docs') && 
       req.path.length > 1 && 
       req.path.endsWith('/')) {
-    res.redirect(301, req.path.slice(0, -1));
+    // Redirect only safe methods so mutating requests keep their method/body semantics.
+    if (req.method === 'GET' || req.method === 'HEAD') {
+      return res.redirect(301, req.path.slice(0, -1));
+    }
   } else {
-    next();
+    return next();
   }
+
+  return next();
 });
 
 app.use(express.json());
