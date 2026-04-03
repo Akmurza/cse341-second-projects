@@ -9,6 +9,6 @@ router.get('/', receiptsController.getAll);
 router.get('/:id', validateObjectId, receiptsController.getById);
 router.post('/', isAuthenticated, validateReceipt, receiptsController.create);
 router.put('/:id', isAuthenticated, validateObjectId, validateReceipt, receiptsController.update);
-router.delete('/:id', isAuthenticated, validateObjectId, validateReceipt, receiptsController.remove);
+router.delete('/:id', isAuthenticated, validateObjectId, receiptsController.remove);
 
 module.exports = router;
