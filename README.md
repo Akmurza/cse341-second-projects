@@ -116,4 +116,3 @@ Invalid payloads return `400` with validation details.
 - Configure Render environment variables
 - Verify Swagger at `https://your-app.onrender.com/api-docs`
 - Record demo video (5-8 minutes): CRUD, OAuth login/logout, protected routes, MongoDB updates
-
